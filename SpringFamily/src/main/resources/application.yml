@@ -1,0 +1,23 @@
+spring:
+  # Server configuration
+  server:
+    port: 8080 #set your port
+  # Database Configuration
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: pass123
+    driverClassName: org.postgresql.Driver
+  #Loggin Configuration
+  logging:
+    pattern:
+      console: "%d %-5level %logger : %msg%n"
+    level:
+      org.springframework: info
+      org.hibernate: debug
