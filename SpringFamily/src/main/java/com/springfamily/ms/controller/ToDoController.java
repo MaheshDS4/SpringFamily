@@ -1,5 +1,6 @@
 package com.springfamily.ms.controller;
 
+import com.springfamily.ms.config.aop.LogTime;
 import com.springfamily.ms.dto.ToDoDto;
 import com.springfamily.ms.dto.ToDoRequest;
 import com.springfamily.ms.service.ToDoService;
@@ -22,13 +23,13 @@ public class ToDoController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ToDoDto createToDoAction(@RequestBody ToDoRequest request) {
-        log.info("Calling Controller");
         return toDoService.toDoService(request);
 
     }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
+    @LogTime
     public List<ToDoDto> getAllToDoAction() {
         return toDoService.getAllToDoService();
     }
