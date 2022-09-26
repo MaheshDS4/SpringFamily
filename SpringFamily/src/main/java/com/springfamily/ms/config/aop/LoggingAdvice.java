@@ -21,10 +21,12 @@ public class LoggingAdvice {
 
     @Around("loggingAnnotationPointCut()")
     public Object annotationLogger(ProceedingJoinPoint pjp) throws Throwable {
-        ObjectMapper mapper = new ObjectMapper();
         String methodName = pjp.getSignature().getName();
         String className = pjp.getTarget().getClass().toString();
+
+        ObjectMapper mapper = new ObjectMapper();
         Object[] array = pjp.getArgs();
+
         log.info("method invoked " + className + " : " + methodName + "()" + "arguments : " + mapper.writeValueAsString(array));
         Object object = pjp.proceed();
         log.info(className + " : " + methodName + "()" + "Response : " + mapper.writeValueAsString(object));
